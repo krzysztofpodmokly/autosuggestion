@@ -1,0 +1,16 @@
+li {
+  list-style: none;
+}
+
+li:last-child .dropdown-item {
+  border: none;
+}
+
+.dropdown-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  overflow: hidden;
+}

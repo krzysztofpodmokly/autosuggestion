@@ -1,0 +1,35 @@
+.dropdown-item-wrapper {
+  width: 100%;
+  position: relative;
+  left: 20px;
+}
+
+.dropdown-item {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid lightgray;
+}
+
+.dropdown-item.active label {
+  font-weight: bold;
+}
+
+.dropdown-label {
+  width: 80%;
+  padding: 10px 0;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.dropdown-icon {
+  position: relative;
+  left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-checkbox {
+  position: absolute;
+  left: -9999px;
+}

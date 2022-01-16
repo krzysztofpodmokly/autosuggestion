@@ -1,0 +1,22 @@
+.search-input-wrapper {
+  padding: 10px 0;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  box-sizing: border-box;
+  width: 90%;
+  border: 1px solid #000;
+  height: 40px;
+  outline: none;
+  font-family: "Roboto";
+  font-size: 16px;
+
+  &:focus,
+  &:hover {
+    outline: 2px solid #000;
+    border: 1px solid transparent;
+  }
+}

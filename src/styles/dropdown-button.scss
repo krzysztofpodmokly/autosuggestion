@@ -1,0 +1,39 @@
+.dropdown-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  width: fit-content;
+  padding: 10px;
+  background-color: #fff;
+  position: relative;
+
+  &.opened {
+    border-bottom: 1px solid #fff;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.dropdown-button-quantity {
+  background-color: black;
+  color: #fff;
+  padding: 4px;
+  margin-right: 12px;
+}
+
+.dropdown-button-label {
+  margin-right: 5px;
+}
+
+.dropdown-button-element {
+  position: absolute;
+  left: -0.2px;
+  bottom: -6px;
+  background-color: #fff;
+  height: 10px;
+  border-radius: 38%;
+  width: 100.4%;
+}
