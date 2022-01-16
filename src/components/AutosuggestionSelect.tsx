@@ -5,7 +5,7 @@ import { Dropdown } from "./Dropdown";
 import { AppContext } from "../context/context";
 import { ActionType } from "../interface/actionTypes";
 
-export const Autosuggestion: React.FC<{}> = (): JSX.Element => {
+export const AutosuggestionSelect: React.FC<{}> = (): JSX.Element => {
   const { state, dispatch } = useContext(AppContext);
   const ref = useRef(null);
 

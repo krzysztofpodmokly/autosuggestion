@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../context/context";
 import { getDropdownOptionsData } from "../context/actions";
 import { useRequest } from "../hooks/useRequest";
@@ -7,6 +7,7 @@ import { JsonObject } from "../interface/JsonObject";
 
 export const SearchInput: React.FC<{}> = (): JSX.Element => {
   const { state, dispatch } = useContext(AppContext);
+  const [userInput, setUserInput] = useState("");
   let dispatchTimeout: ReturnType<typeof setTimeout>;
   const { doRequest } = useRequest();
 
@@ -15,17 +16,14 @@ export const SearchInput: React.FC<{}> = (): JSX.Element => {
   ) => {
     const userInput = e.target.value;
 
-    dispatch({
-      type: ActionType.UPDATE_USER_INPUT,
-      payload: userInput,
-    });
+    setUserInput(userInput);
 
     if (Boolean(dispatchTimeout)) {
       clearTimeout(dispatchTimeout);
     }
     dispatchTimeout = setTimeout(() => dispatchOptions(userInput), 400);
 
-    await getDropdownOptionsData(state.userInput, dispatch, doRequest);
+    await getDropdownOptionsData(userInput, dispatch, doRequest);
   };
 
   const dispatchOptions = async (userInput: string) => {
@@ -40,9 +38,7 @@ export const SearchInput: React.FC<{}> = (): JSX.Element => {
   const getActiveOptionList = (userInput: string, data: JsonObject[]) => {
     const output = data.filter((option: JsonObject) => {
       const country = (option.country as string).toLowerCase();
-      const name = (option.name as string).toLowerCase();
-      const sentenceToMatch = `${country} ${name}`;
-      return sentenceToMatch.includes(userInput.toLowerCase());
+      return country.includes(userInput.toLowerCase());
     });
 
     return (
@@ -56,7 +52,7 @@ export const SearchInput: React.FC<{}> = (): JSX.Element => {
       <input
         type="text"
         className="search-input"
-        value={state.userInput}
+        value={userInput}
         onChange={handleSearchInputChange}
         autoFocus={true}
       />

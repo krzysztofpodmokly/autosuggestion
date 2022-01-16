@@ -34,12 +34,6 @@ export const reducer = (state: State, action: AppActions): State => {
         filteredOptions: action.payload,
       };
 
-    case ActionType.UPDATE_USER_INPUT:
-      return {
-        ...state,
-        userInput: action.payload,
-      };
-
     case ActionType.FILTER_OPTIONS:
       return {
         ...state,

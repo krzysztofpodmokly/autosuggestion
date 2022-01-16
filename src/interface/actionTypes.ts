@@ -7,7 +7,6 @@ export enum ActionType {
   SET_ERRORS,
   REMOVE_ERRORS,
   RESET_SELECTED_OPTIONS,
-  UPDATE_USER_INPUT,
   FILTER_OPTIONS,
   UPDATE_FILTERED_OPTIONS,
   UPDATE_SELECTED_OPTIONS,
@@ -36,11 +35,6 @@ export interface RESET_SELECTED_OPTIONS {
   payload: JsonObject[] | null;
 }
 
-export interface UPDATE_USER_INPUT {
-  type: ActionType.UPDATE_USER_INPUT;
-  payload: string;
-}
-
 export interface FILTER_OPTIONS {
   type: ActionType.FILTER_OPTIONS;
   payload: JsonObject[];
@@ -67,7 +61,6 @@ export type AppActions =
   | SET_ERRORS
   | REMOVE_ERRORS
   | RESET_SELECTED_OPTIONS
-  | UPDATE_USER_INPUT
   | FILTER_OPTIONS
   | UPDATE_FILTERED_OPTIONS
   | UPDATE_SELECTED_OPTIONS
