@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+
 import { AppContext } from "../context/context";
 import { getDropdownOptionsData } from "../context/actions";
 import { useRequest } from "../hooks/useRequest";
@@ -6,7 +7,7 @@ import { ActionType } from "../interface/actionTypes";
 import { JsonObject } from "../interface/JsonObject";
 
 export const SearchInput: React.FC<{}> = (): JSX.Element => {
-  const { state, dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
   const [userInput, setUserInput] = useState("");
   let dispatchTimeout: ReturnType<typeof setTimeout>;
   const { doRequest } = useRequest();
