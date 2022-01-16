@@ -1,12 +1,16 @@
 import { useContext } from "react";
-import { instance } from "../api/instance";
-import { AppContext } from "../context/context";
 import axios from "axios";
+
+import { AppContext } from "../context/context";
+import { JsonObject } from "../interface/JsonObject";
+import { ActionType } from "../interface/actionTypes";
 
 export const useRequest = () => {
   const { dispatch } = useContext(AppContext);
 
-  const doRequest = async (userInput: any) => {
+  const doRequest = async (
+    userInput: string
+  ): Promise<JsonObject[] | undefined> => {
     try {
       const { data } = await axios.get(
         `http://universities.hipolabs.com/search?country=${userInput}`
@@ -14,12 +18,12 @@ export const useRequest = () => {
       return data;
     } catch (error) {
       dispatch({
-        type: "SET_ERRORS",
+        type: ActionType.SET_ERRORS,
         //@ts-ignore
         payload: error.response.statusText,
       });
       setTimeout(() => {
-        dispatch({ type: "REMOVE_ERRORS" });
+        dispatch({ type: ActionType.REMOVE_ERRORS });
       }, 5000);
     }
   };

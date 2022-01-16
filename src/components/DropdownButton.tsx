@@ -1,9 +1,13 @@
 import { useContext } from "react";
-import { AppContext } from "../context/context";
-import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 
-export const DropdownButton = (props: any) => {
+import { AppContext } from "../context/context";
+import { DropdownButtonProps } from "../interface/DropdownButtonProps";
+
+export const DropdownButton: React.FC<DropdownButtonProps> = (
+  props
+): JSX.Element => {
   const { state } = useContext(AppContext);
   const { toggleDropdown } = props;
 

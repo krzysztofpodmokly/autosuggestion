@@ -4,7 +4,7 @@ import { AppContext } from "./context/context";
 import { reducer } from "./context/reducer";
 import { Autosuggestion } from "./components/Autosuggestion";
 
-const App = () => {
+const App: React.FC = (): JSX.Element => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (

@@ -1,19 +1,18 @@
 import { useContext, useEffect, useCallback, useRef } from "react";
+
 import { DropdownButton } from "./DropdownButton";
 import { Dropdown } from "./Dropdown";
-import { useRequest } from "../hooks/useRequest";
 import { AppContext } from "../context/context";
-import { getDropdownOptionsData } from "../context/actions";
+import { ActionType } from "../interface/actionTypes";
 
-export const Autosuggestion = () => {
-  const { doRequest } = useRequest();
+export const Autosuggestion: React.FC<{}> = (): JSX.Element => {
   const { state, dispatch } = useContext(AppContext);
   const ref = useRef(null);
 
-  const closeDropdownWithEscape = useCallback((e: any) => {
+  const closeDropdownWithEscape = useCallback((e: KeyboardEvent) => {
     if (e.key === "Escape") {
       dispatch({
-        type: "TOGGLE_DROPDOWN",
+        type: ActionType.TOGGLE_DROPDOWN,
         payload: false,
       });
     }
@@ -27,18 +26,14 @@ export const Autosuggestion = () => {
     };
   }, [closeDropdownWithEscape]);
 
-  useEffect(() => {
-    // getDropdownOptionsData(dispatch, doRequest);
-  }, []);
-
-  const handleDropdownToggle = () => {
+  const handleDropdownToggle = (): void => {
     dispatch({
-      type: "TOGGLE_DROPDOWN",
+      type: ActionType.TOGGLE_DROPDOWN,
       payload: !state.isDropdownVisible,
     });
   };
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     document.addEventListener("click", (e) => {
       if (
         (ref.current &&
@@ -47,7 +42,7 @@ export const Autosuggestion = () => {
         ref.current === e.target
       ) {
         dispatch({
-          type: "TOGGLE_DROPDOWN",
+          type: ActionType.TOGGLE_DROPDOWN,
           payload: false,
         });
       }

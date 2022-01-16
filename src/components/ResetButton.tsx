@@ -1,15 +1,16 @@
 import { useContext } from "react";
 import { AppContext } from "../context/context";
+import { ActionType } from "../interface/actionTypes";
+import { JsonObject } from "../interface/JsonObject";
 
-export const ResetButton = (props: any) => {
+export const ResetButton: React.FC<{}> = (): JSX.Element => {
   const { state, dispatch } = useContext(AppContext);
-  const handleResetItems = () => {
-    // RESET_SELECTED_OPTIONS
+  const handleResetItems = (): void => {
     dispatch({
-      type: "RESET_SELECTED_OPTIONS",
+      type: ActionType.RESET_SELECTED_OPTIONS,
       payload:
         state.filteredOptions &&
-        state.filteredOptions.map((option: any) => {
+        state.filteredOptions.map((option: JsonObject) => {
           return { ...option, checked: false };
         }),
     });

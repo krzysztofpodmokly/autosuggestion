@@ -1,7 +1,17 @@
-export const initialState = {
+import { JsonObject } from "../interface/JsonObject";
+
+export interface State {
+  loading: boolean;
+  errors: JsonObject[];
+  filteredOptions: JsonObject[] | null;
+  userInput: string;
+  selectedOptions: JsonObject[] | null;
+  isDropdownVisible: boolean;
+}
+
+export const initialState: State = {
   loading: false,
   errors: [],
-  dropdownOptions: null,
   filteredOptions: null,
   userInput: "",
   selectedOptions: null,

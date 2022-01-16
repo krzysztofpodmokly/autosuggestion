@@ -1,67 +1,64 @@
-export const reducer = (state: any, action: any) => {
-  switch (action.type) {
-    case "GET_DROPDOWN_DATA":
-      return {
-        ...state,
-        dropdownOptions: action.payload,
-      };
+import { AppActions, ActionType } from "../interface/actionTypes";
+import { State } from "./state";
 
-    case "START_LOADING":
+export const reducer = (state: State, action: AppActions): State => {
+  switch (action.type) {
+    case ActionType.START_LOADING:
       return {
         ...state,
         loading: true,
       };
 
-    case "END_LOADING":
+    case ActionType.END_LOADING:
       return {
         ...state,
         loading: false,
       };
 
-    case "SET_ERRORS":
+    case ActionType.SET_ERRORS:
       return {
         ...state,
         errors: [...state.errors, action.payload],
       };
 
-    case "REMOVE_ERRORS":
+    case ActionType.REMOVE_ERRORS:
       return {
         ...state,
         errors: [],
       };
 
-    case "RESET_SELECTED_OPTIONS":
+    case ActionType.RESET_SELECTED_OPTIONS:
       return {
         ...state,
         selectedOptions: null,
         filteredOptions: action.payload,
       };
 
-    case "UPDATE_USER_INPUT":
+    case ActionType.UPDATE_USER_INPUT:
       return {
         ...state,
         userInput: action.payload,
       };
 
-    case "FILTER_OPTIONS":
+    case ActionType.FILTER_OPTIONS:
       return {
         ...state,
         filteredOptions: action.payload,
       };
 
-    case "UPDATE_FILTERED_OPTIONS":
+    case ActionType.UPDATE_FILTERED_OPTIONS:
       return {
         ...state,
         filteredOptions: action.payload,
       };
 
-    case "UPDATE_SELECTED_OPTIONS":
+    case ActionType.UPDATE_SELECTED_OPTIONS:
       return {
         ...state,
         selectedOptions: action.payload,
       };
 
-    case "TOGGLE_DROPDOWN":
+    case ActionType.TOGGLE_DROPDOWN:
       return {
         ...state,
         isDropdownVisible: action.payload,
